@@ -13,6 +13,7 @@
 #include <stdio.h>
 #include <math.h>
 #include <sys/time.h>
+
 #include "IRunnable.h"
 #include "CContainer.h"
 #include "CBBBHardware.h"
@@ -35,7 +36,7 @@ private:
 	void calc();
 	void filter();
 	void regler();
-	void jump();
+
 private:
 	CContainer* mContainer;
 	CBBBHardware mHardware;
@@ -43,13 +44,6 @@ private:
 	UInt16 mADCValue;
 	SMPU6050Data mSensor1;
 	SMPU6050Data mSensor2;
-
-	float mx1_dd;
-	float mx2_dd;
-	float my1_dd;
-	float my2_dd;
-	float phi1_d;
-	float phi2_d;
 
 	SStateVectorData mStateVector_calc;
 	SStateVectorData mStateVector_filt;
@@ -60,19 +54,24 @@ private:
 	timeval timeend;
 	timeval timebegin;
 
+	const float mT_a;			// Zeitkonstante Komplementärfilter (tau = 1/100Hz [s])
+	const float mAlpha;			// 1-mAlpha = Tiefpass-Verstärkung, mAlpha = Hochpass-Verstärkung
+	const float mR_S1;			// Radius Sensor S1 zu Bezugspunkt A
+	const float mR_S2;			// Radius Sensor S2 zu Bezugspunkt A
+	const float mWinkelOffset;  // zur Nachkalibration des durch den Versatz der Sensoren entsehenden Offsets
+
 	int seconds;
 	int useconds;
-	float mT_a;
-	float malpha;
-	float mr_S1;
-	float mr_S2;
+
+	float mx1_dd;
+	float mx2_dd;
+	float my1_dd;
+	float my2_dd;
+	float phi1_d;
+	float phi2_d;
 	float mpsi_val[8];
 	float mpsi_sumval;
 	float mTorgueMotor;
 
-	float mWinkelOffset;
-
-
-protected:
 };
 #endif /* CCONTROLCOMP_H_ */

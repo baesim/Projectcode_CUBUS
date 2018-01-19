@@ -13,7 +13,7 @@ CCommComp::CCommComp(CContainer* myContainer): mContainer(myContainer)
 
 void CCommComp::init()
 {
-	mServer.init(); //init server
+	mServer.init();
 }
 void CCommComp::run()
 {
