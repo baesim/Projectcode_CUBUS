@@ -18,8 +18,8 @@
 
 #include "CControlComp.h"
 
-CControlComp::CControlComp(CContainer* myContainer): mContainer(myContainer), mT_a(0.01),
-mAlpha(0.98), mR_S1(0.14), mR_S2(0.061), mWinkelOffset(0.1486)
+CControlComp::CControlComp(CContainer* myContainer): mContainer(myContainer), mT_a(0.02),
+mAlpha(0.96), mR_S1(0.14), mR_S2(0.061), mWinkelOffset(0.1486)
 {
 	/* Kalibrationskonstanten
 	 * Bisher: Initialisierung der Konstanten über Kodierung in Instanz
